@@ -26,22 +26,22 @@ int main(int argc, char **argv) {
     if (argc==1)
     {
         // print usage
-        std::cout << "./a.out devNr1 devNr2 rounds maxSize location \n Where:\n
-         devNr1 is the device number to use on rank 0 \n
-         devNr2 is the device number to use on rank 1 \n
-         rpinds is the number of rounds to run each messge size \n
-         maxSize is the maximum message size to test \n
+        std::cout << "./a.out devNr1 devNr2 rounds maxSize location \n Where:\n\
+         devNr1 is the device number to use on rank 0 \n\
+         devNr2 is the device number to use on rank 1 \n\
+         rpinds is the number of rounds to run each messge size \n\
+         maxSize is the maximum message size to test \n\
          location is either \"host\" or \"device\" to allocate memory on either the host or device \n" << std::endl;
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
 
-    auto rounds = std::atoi(argv[3];
-    auto maxLen = std::atoi(argv[4];
+    auto rounds = std::atoi(argv[3]);
+    auto maxLen = std::atoi(argv[4]);
 
     if(rank == 0)
         cudaSetDevice(std::atoi(argv[1]));
     else
-        cudaSetDevice(std::atoi(argv[2]);
+        cudaSetDevice(std::atoi(argv[2]));
 
     int *a;
     int *b;
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
         cudaMalloc((void**)&a, sizeof(int)*maxLen); 		
         cudaMalloc((void**)&b, sizeof(int)*maxLen); 		
     }
-    else if(argv[5]=="host"))
+    else if(argv[5]=="host")
     {
         a = new int[maxLen];
         b = new int[maxLen];
