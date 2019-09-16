@@ -45,17 +45,23 @@ int main(int argc, char **argv) {
 
     int *a;
     int *b;
+	std::cout << argv[5] << std::endl;
 
-    if(argv[5]=="device")
+    if(std::string(argv[5])=="device")
     {
+	std::cout << "dev alloc" << std::endl;
+	
         cudaMalloc((void**)&a, sizeof(int)*maxLen); 		
         cudaMalloc((void**)&b, sizeof(int)*maxLen); 		
     }
-    else if(argv[5]=="host")
+    else
     {
+	std::cout << "host alloc" << std::endl;
         a = new int[maxLen];
         b = new int[maxLen];
     }
+
+    std::cout << "start" << std::endl;
     
     for (int len = 1; len <= maxLen; len *= 2) {
 
